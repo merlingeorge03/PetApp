@@ -140,7 +140,7 @@ namespace PetApp
         public void feed()
         {
             //Modify hunger and health values only if it is within range 0 and 10
-            if (hunger > 0 && hunger < 10)
+            if (hunger >= 0 && hunger < 10)
             {
                 hunger -= 1;
 
@@ -164,7 +164,7 @@ namespace PetApp
         public void play()
         {
             //Modify hunger and happiness values only if it is within range 0 and 10
-            if (hunger > 0 && hunger < 10)
+            if (hunger >= 0 && hunger < 10)
             {
                 hunger = hunger + 1;
 
@@ -189,7 +189,7 @@ namespace PetApp
         {
             //Modify happiness and health values only if it is within range 0 and 10
 
-            if (happiness > 0 && happiness < 10)
+            if (happiness >= 0 && happiness < 10)
             {
                 happiness = happiness - 1;
 
