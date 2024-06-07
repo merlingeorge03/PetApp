@@ -8,8 +8,7 @@ Detailed Project Features includes:
    •	Playing
    •	Resting
 3. Pet Status Monitoring
-4. Time-Based Changes
-5. Enhanced Interaction Logic
+4. Enhanced Interaction Logic - Example: If the pet is really hungry, then it denies to get feed 
 6. User Interface and Experience
 
    Setup instructions
