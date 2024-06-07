@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PetApp
 {
     internal class PetLogic
     {
         static String petName;
+        static int actionSelected;
+        Pet pet;
 
         static void Main(string[] args)
         {
@@ -18,7 +21,13 @@ namespace PetApp
             askPetType();
 
             // Asking users choice for pet name and display a welcome message for pet.
-            askPetName();
+            petName=askPetName();
+
+            //Display the menu that include the options to interact with the pet and perform actions 
+            actionSelected = displayMainMenu();
+
+            //Perform the actions based on the option selected by the user
+            performAction(petName, actionSelected);
         }
 
         static void askPetType()
@@ -47,14 +56,64 @@ namespace PetApp
         }
 
 
-        static void askPetName()
+        static string askPetName()
         {
             Console.WriteLine("\nEnter the pet name");
             petName = Console.ReadLine();
-            Console.WriteLine($"\nWelcome, {petName}! Let's take a good care of him.");
+            Console.WriteLine($"\nWelcome, {petName}! Let's take a good care of him.\n");
+            return petName;
         }
 
+        static int displayMainMenu()
+        {
+            //Options in the MainMenu
+            Console.WriteLine("\n\tMain Menu:\n");
+            Console.WriteLine("\t1. Feed Buddy");
+            Console.WriteLine("\t2. Play with Buddy");
+            Console.WriteLine("\t3. Let Buddy Rest");
+            Console.WriteLine("\t4. Check Buddy's Status");
+            Console.WriteLine("\t5. Exit");
+            Console.WriteLine("\n\tSelect an option \n");
+
+            return int.Parse(Console.ReadLine());
+        }
+
+        static void performAction(string name, int action)
+        {
+            Console.WriteLine("User Input:" +action);
+
+            switch (action)
+            {
+                case 1:
+                    Console.WriteLine("inside switch statement");
+                    Console.WriteLine($"Inside case 1: petname {name}, Action : " + action);
+              
+                    break;
+
+                case 2:
+                    //call play method
+                    break;
+                case 3:
+                    //call rest method
+                    break;
+                case 4:
+                    //call status method
+                    break;
+                case 5:
+                    // Exit from the app
+                    Console.WriteLine("Exiting the application, GoodBye !");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Option. Please try again");
+                    break;
+            }
+            Console.WriteLine("outside switch statement");
+
+        }
     }
+
+
 
     public class Pet
     {
