@@ -27,7 +27,7 @@ namespace PetApp
             askPetName();
 
             Console.WriteLine($"\n {petName}'s status \n\n\tHunger = 5 , \t Health =  5 , \t Happiness = 5");
-            
+
             //Display the menu that include the options to interact with the pet and perform actions 
             displayMainMenu();
 
@@ -78,10 +78,10 @@ namespace PetApp
         {
             //Options in the MainMenu
             Console.WriteLine("\nMainMenu options\n");
-            Console.WriteLine("\t1. Feed Buddy");
-            Console.WriteLine("\t2. Play with Buddy");
-            Console.WriteLine("\t3. Let Buddy Rest");
-            Console.WriteLine("\t4. Check Buddy's Status");
+            Console.WriteLine($"\t1. Feed {petName}");
+            Console.WriteLine($"\t2. Play with {petName}");
+            Console.WriteLine($"\t3. Let {petName} Rest");
+            Console.WriteLine($"\t4. Check {petName}'s Status");
             Console.WriteLine("\t5. Exit");
             Console.WriteLine("\nPlease choose an option\n");
 
@@ -107,23 +107,23 @@ namespace PetApp
                         break;
 
                     case "2":
-                        //call play method
-                        //displayMainMenu();
+                        pet.play();
+                        displayMainMenu();
                         break;
 
                     case "3":
-                        //call rest method
-                       // displayMainMenu();
+                        pet.rest();
+                        displayMainMenu();
                         break;
 
                     case "4":
                         pet.printStatus();
-                        //displayMainMenu();
+                        displayMainMenu();
                         break;
 
                     case "5":
                         // Exit from the app
-                        Console.WriteLine("Exiting the application, GoodBye !");
+                        Console.WriteLine("Exiting the application, GoodBye !\n");
                         break;
 
                     default:
@@ -164,18 +164,18 @@ namespace PetApp
             {
                 hunger -= 1;
 
-                if (health >=0 && health < 10)
+                if (health >= 0 && health < 10)
                 {
                     ++health;
                 }
-                
-                Console.WriteLine($"\t You fed {name}. His hunger decreases, and health improves slightly.");
+
+                Console.WriteLine($"\n\t You fed {name}. His hunger decreases, and health improves slightly.");
                 initialStatus = false;
                 printStatus();
             }
             else
             {
-                Console.WriteLine($"{name} is already full and not hungry");
+                Console.WriteLine($"\n\t {name} is already full and not hungry.");
             }
 
         }
@@ -185,20 +185,43 @@ namespace PetApp
 
             if (hunger > 0 && hunger < 10)
             {
-                hunger = hunger+1;
+                hunger = hunger + 1;
+
+                if (happiness >= 0 && happiness < 10)
+                {
+                    ++happiness;
+                }
+
+                Console.WriteLine($"\n\t You played with {name}. His Happiness increases, but he's a bit hungrier.");
+                initialStatus = false;
+                printStatus();
+            }
+            else if (hunger>=10)
+            {
+                Console.WriteLine($"\n\t{name} is already really hungry and can't play anymore");
+            }
+
+        }
+
+        public void rest()
+        {
+
+            if (happiness > 0 && happiness < 10)
+            {
+                happiness = happiness - 1;
 
                 if (health >= 0 && health < 10)
                 {
                     ++health;
                 }
 
-                Console.WriteLine($"\t You fed {name}. His hunger decreases, and health improves slightly.");
+                Console.WriteLine($"\n\t {name} took rest. His health increases, but his happiness decreases.");
                 initialStatus = false;
                 printStatus();
             }
             else
             {
-                Console.WriteLine($"{name} is already full and not hungry");
+                Console.WriteLine($"\n\t{name} has rested well, but he's very sad. Please play with him");
             }
 
         }
@@ -206,8 +229,8 @@ namespace PetApp
 
         public void printStatus()
         {
-                Console.WriteLine($"\n {name}'s status \n\nHunger = {hunger} , \t Health =  {health} , \t Happiness = {happiness}");
-            
+            Console.WriteLine($"\n {name}'s status \n\n\tHunger = {hunger} , \t Health =  {health} , \t Happiness = {happiness}");
+
         }
     }
 
