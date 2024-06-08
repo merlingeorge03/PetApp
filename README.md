@@ -15,5 +15,8 @@ git clone https://github.com/merlingeorge03/PetApp.git
 "Program.cs" file contains the both class "PetLogic" and Pet
 4.	Interact with the Pet by following the instructions in the console window
 
+Link to recorded video
+https://conestogac.zoom.us/rec/share/cMC2du5vrYmv3sPawp_UujKp2FKCzqU8jzGv2uz4GQxv38V-19gMYpGlyLK3tz97.N8Z0YDToq8zqLcom
+
    
 
